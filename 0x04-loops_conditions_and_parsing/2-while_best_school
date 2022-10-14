@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Write a Bash script that displays Holberton School 10 times.
+index=0
+Limit=10
+while (( "$index" < "$Limit" ))
+do
+	echo "Best School"
+	index=$((index + 1))
+done
