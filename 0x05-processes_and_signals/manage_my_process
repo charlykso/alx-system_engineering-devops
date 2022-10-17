@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-trap "rm /tmp/my_process;exit" SIGTERM
+trap "rm /var/run/my_process.pid;exit" SIGTERM
 
 while true; do
     echo "I am alive!" >> /tmp/my_process
