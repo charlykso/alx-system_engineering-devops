@@ -5,12 +5,12 @@
 # - to refuse to authenticate using a password
 include stdlib
 
-file_line{ 'No password':
+file_line { 'NO password':
   ensure             => present,
-  path               => 'etc/ssh/ssh_config',
-  line               => 'PasswordAuthentication no',
+  path               => '/etc/ssh/ssh_config',
+  line               => '    PasswordAuthentication no',
   match              => '^PasswordAuthentication',
-  append_on_no_match => true
+  append_on_no_match => true,
 }
 
 file_line{ 'New private key holder':
