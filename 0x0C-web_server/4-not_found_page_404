@@ -9,4 +9,4 @@ sudo sed -i '/^\sserver_name.*/a \        rewrite ^/redirect_me https://www.yout
 sudo sed -i '/^\slocation.*/i \        error_page 404 /custom_404.html;' /etc/nginx/sites-available/default
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html
 
-service nginx start
+sudo service nginx restart
