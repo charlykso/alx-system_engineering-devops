@@ -2,14 +2,14 @@
 # installing nginx and configure the server with Puppet.
 
 exec {'update':
-  provider => shell,
   command  => 'sudo apt-get -y update',
+  provider => shell,
   befor    => Exec['install Nginx'],
 }
 
 exec {'install Nginx':
-  provider => shell,
   command  => 'sudo apt-get -y install nginx',
+  provider => shell,
   before   => Exec['update header'],
 }
 
@@ -21,6 +21,6 @@ exec {'update header':
 }
 
 exec {'restart Nginx':
+  command  => 'sudo service nginx restart',
   provider => shell,
-  command  => 'sudo service nginx restart'
 }
