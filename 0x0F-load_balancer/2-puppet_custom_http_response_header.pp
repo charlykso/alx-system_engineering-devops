@@ -10,7 +10,13 @@ exec {'update':
 exec {'install Nginx':
   command  => 'sudo apt-get -y install nginx',
   provider => shell,
-  before   => Exec['update header'],
+  before   => Exec['allow nginx http'],
+}
+
+exec {'allow nginx http':
+  command  => 'sudo ufw allow "Nginx HTTP"',
+  provider => shell,
+  befor    => Exec['update header'],
 }
 
 exec {'update header':
