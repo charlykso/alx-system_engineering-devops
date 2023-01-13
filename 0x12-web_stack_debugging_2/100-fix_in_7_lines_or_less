@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#making task 1 fix short and sweet
+#Run Nginx as Nginx
 sudo pkill apache2
 sleep 2
 sudo chmod 777 /etc/nginx/nginx.conf
