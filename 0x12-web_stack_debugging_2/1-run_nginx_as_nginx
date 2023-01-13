@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#Run Nginx as Nginx
+
+#stop apache2 server
+sudo pkill apache2
+
+sleep 2
+#chnage permision of the config file
+sudo chmod 777 /etc/nginx/nginx.conf
+
+#update nginx to listen to port 8080
+sed -i 's/80/8080/g' /etc/nginx/sites-enabled/default
+#create nginx user
+sudo -u nginx nginx
+
