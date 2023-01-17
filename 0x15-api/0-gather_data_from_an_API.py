@@ -14,7 +14,7 @@ if __name__=='__main__':
     TASK_TITLE = []
     USER_ID = argv[1]
     req = requests.get('https://jsonplaceholder.typicode.com/users/{}'.
-                       format(USER_ID)).join()
+                       format(USER_ID)).json()
     USERNAME = req.get("username")
     req = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'.
                        format(USER_ID)).json()
