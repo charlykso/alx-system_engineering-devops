@@ -22,7 +22,8 @@ def to_csv():
         "http://jsonplaceholder.typicode.com/todos").json()
     for todo in todos:
         if todo.get('userId') == int(argv[1]):
-            TASK_STATUS_TITLE.append((todo.get('completed'), todo.get('title')))
+            TASK_STATUS_TITLE.append(
+                (todo.get('completed'), todo.get('title')))
 
     """
     export to csv
