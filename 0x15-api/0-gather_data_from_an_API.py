@@ -4,12 +4,13 @@ for a given employee ID,
 returns information about his/her TODO list progress.
 """
 
+import requests
+from sys import argv
 
-if __name__ == '__main__':
-    import requests
-    from sys import argv
 
-    users = requests.get('https://jsonplaceholder.typicode.com/users')
+def display():
+    """return API data"""
+    users = requests.get("http://jsonplaceholder.typicode.com/users")
     for u in users.json():
         if u.get('id') == int(argv[1]):
             EMPLOYEE_NAME = (u.get('name'))
@@ -27,5 +28,9 @@ if __name__ == '__main__':
     print("Employee {} is done with tasks({}/{}):".format(EMPLOYEE_NAME,
                                                           NUMBER_OF_DONE_TASKS,
                                                           TOTAL_NUM_OF_TASKS))
-    for title in TASK_TITLE:
-        print('\t {}'.format(title))
+    for task in TASK_TITLE:
+        print("\t {}".format(task))
+
+
+if __name__ == "__main__":
+    display()
