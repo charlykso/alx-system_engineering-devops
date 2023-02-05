@@ -1,0 +1,152 @@
+[
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "argv",
+        "importPath": "sys",
+        "description": "sys",
+        "isExtraImport": true,
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "argv",
+        "importPath": "sys",
+        "description": "sys",
+        "isExtraImport": true,
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "argv",
+        "importPath": "sys",
+        "description": "sys",
+        "isExtraImport": true,
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "display",
+        "kind": 2,
+        "importPath": "0x15-api.0-gather_data_from_an_API",
+        "description": "0x15-api.0-gather_data_from_an_API",
+        "peekOfCode": "def display():\n    \"\"\"return API data\"\"\"\n    users = requests.get(\"http://jsonplaceholder.typicode.com/users\")\n    for u in users.json():\n        if u.get('id') == int(argv[1]):\n            EMPLOYEE_NAME = (u.get('name'))\n            break\n    TOTAL_NUM_OF_TASKS = 0\n    NUMBER_OF_DONE_TASKS = 0\n    TASK_TITLE = []",
+        "detail": "0x15-api.0-gather_data_from_an_API",
+        "documentation": {}
+    },
+    {
+        "label": "to_csv",
+        "kind": 2,
+        "importPath": "0x15-api.1-export_to_CSV",
+        "description": "0x15-api.1-export_to_CSV",
+        "peekOfCode": "def to_csv():\n    \"\"\"\n    get the API data\n    \"\"\"\n    users = requests.get(\n        \"http://jsonplaceholder.typicode.com/users\").json()\n    for user in users:\n        if user.get('id') == int(argv[1]):\n            USERNAME = (user.get('username'))\n            break",
+        "detail": "0x15-api.1-export_to_CSV",
+        "documentation": {}
+    },
+    {
+        "label": "to_json",
+        "kind": 2,
+        "importPath": "0x15-api.2-export_to_JSON",
+        "description": "0x15-api.2-export_to_JSON",
+        "peekOfCode": "def to_json():\n    \"\"\"\n    return API data\n    \"\"\"\n    users = requests.get(\"http://jsonplaceholder.typicode.com/users\")\n    for u in users.json():\n        if u.get('id') == int(argv[1]):\n            USERNAME = (u.get('username'))\n            break\n    TASK_STATUS_TITLE = []",
+        "detail": "0x15-api.2-export_to_JSON",
+        "documentation": {}
+    },
+    {
+        "label": "all_to_json",
+        "kind": 2,
+        "importPath": "0x15-api.3-dictionary_of_list_of_dictionaries",
+        "description": "0x15-api.3-dictionary_of_list_of_dictionaries",
+        "peekOfCode": "def all_to_json():\n    \"\"\"return API data\"\"\"\n    USERS = []\n    userss = requests.get(\"http://jsonplaceholder.typicode.com/users\")\n    for u in userss.json():\n        USERS.append((u.get('id'), u.get('username')))\n    TASK_STATUS_TITLE = []\n    todos = requests.get(\"http://jsonplaceholder.typicode.com/todos\")\n    for todo in todos.json():\n        TASK_STATUS_TITLE.append((todo.get('userId'),",
+        "detail": "0x15-api.3-dictionary_of_list_of_dictionaries",
+        "documentation": {}
+    },
+    {
+        "label": "number_of_subscribers",
+        "kind": 2,
+        "importPath": "0x16-api_advanced.0-subs",
+        "description": "0x16-api_advanced.0-subs",
+        "peekOfCode": "def number_of_subscribers(subreddit):\n    \"\"\"\n    send a get request to Reddit API.\n    return number of subscribers or 0\n    \"\"\"\n    url = \"https://www.reddit.com/r/{}/about.json\".format(subreddit)\n    headers = requests.utils.default_headers()\n    headers.update({'User-Agent': 'My User Agent 1.0'})\n    response = requests.get(url, headers=headers).json()\n    subscribers = response.get('data', {}).get('subscribers')",
+        "detail": "0x16-api_advanced.0-subs",
+        "documentation": {}
+    },
+    {
+        "label": "top_ten",
+        "kind": 2,
+        "importPath": "0x16-api_advanced.1-top_ten",
+        "description": "0x16-api_advanced.1-top_ten",
+        "peekOfCode": "def top_ten(subreddit):\n    \"\"\"\n    prints the titles of the first 10 hot posts listed for a given subreddit\n    if not a valid subreddit print None\n    \"\"\"\n    url = \"https://www.reddit.com/r/{}/hot.json?limit=10\".format(subreddit)\n    headers = requests.utils.default_headers()\n    headers.update({'User-Agent': 'My User Agent 1.0'})\n    res = requests.get(url, headers=headers).json()\n    hot_posts = res.get('data', {}).get('children', [])",
+        "detail": "0x16-api_advanced.1-top_ten",
+        "documentation": {}
+    },
+    {
+        "label": "sort_histogram",
+        "kind": 2,
+        "importPath": "0x16-api_advanced.100-count",
+        "description": "0x16-api_advanced.100-count",
+        "peekOfCode": "def sort_histogram(histogram={}):\n    '''Sorts and prints the given histogram.\n    '''\n    histogram = list(filter(lambda kv: kv[1], histogram))\n    histogram_dict = {}\n    for item in histogram:\n        if item[0] in histogram_dict:\n            histogram_dict[item[0]] += item[1]\n        else:\n            histogram_dict[item[0]] = item[1]",
+        "detail": "0x16-api_advanced.100-count",
+        "documentation": {}
+    },
+    {
+        "label": "count_words",
+        "kind": 2,
+        "importPath": "0x16-api_advanced.100-count",
+        "description": "0x16-api_advanced.100-count",
+        "peekOfCode": "def count_words(subreddit, word_list, histogram=[], n=0, after=None):\n    '''Counts the number of times each word in a given wordlist\n    occurs in a given subreddit.\n    '''\n    api_headers = {\n        'Accept': 'application/json',\n        'User-Agent': ' '.join([\n            'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',\n            'AppleWebKit/537.36 (KHTML, like Gecko)',\n            'Chrome/97.0.4692.71',",
+        "detail": "0x16-api_advanced.100-count",
+        "documentation": {}
+    },
+    {
+        "label": "recurse",
+        "kind": 2,
+        "importPath": "0x16-api_advanced.2-recurse",
+        "description": "0x16-api_advanced.2-recurse",
+        "peekOfCode": "def recurse(subreddit, hot_list=[]):\n    \"\"\"\n    function that queries the Reddit API and returns\n    a list containing the titles of all hot articles for a given subreddit\n    returns: a list containing the titles of\n    all hot articles for a given subreddit\n    or return None if no results are found for a give subreddit\n    \"\"\"\n    global after\n    headers = {'User-Agent': 'xica369'}",
+        "detail": "0x16-api_advanced.2-recurse",
+        "documentation": {}
+    },
+    {
+        "label": "after",
+        "kind": 5,
+        "importPath": "0x16-api_advanced.2-recurse",
+        "description": "0x16-api_advanced.2-recurse",
+        "peekOfCode": "after = None\ndef recurse(subreddit, hot_list=[]):\n    \"\"\"\n    function that queries the Reddit API and returns\n    a list containing the titles of all hot articles for a given subreddit\n    returns: a list containing the titles of\n    all hot articles for a given subreddit\n    or return None if no results are found for a give subreddit\n    \"\"\"\n    global after",
+        "detail": "0x16-api_advanced.2-recurse",
+        "documentation": {}
+    }
+]
